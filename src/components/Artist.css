@@ -1,0 +1,52 @@
+/* =====================================================
+   ARTIST CARD
+===================================================== */
+.artist {
+    width: 150px;
+    min-width: 150px;
+    height: 190px;
+    position: relative;
+    background: linear-gradient(145deg, var(--glass-high), var(--glass-low));
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.artist:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-deep);
+    border-color: var(--glass-border-hover);
+}
+
+.artist img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+.artist_info {
+    padding: 7px;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+
+.artist_info h2 {
+    font-family: 'Pro-Racing';
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+}
+
+.artist_info span {
+    color: var(--text-muted);
+    font-size: 13px;
+}

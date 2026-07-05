@@ -1,0 +1,253 @@
+/* ===================================
+   MAIN CONTAINER
+=================================== */
+
+.ArtistsSongs{
+    width:70%;
+    height:100%;
+    position:relative;
+    overflow-x:hidden;
+
+    background:
+    linear-gradient(
+        180deg,
+        #121212 0%,
+        #0a0a0a 100%
+    );
+
+    color:white;
+}
+
+/* ===================================
+   HERO SECTION
+=================================== */
+
+#posterImg{
+    position:relative;
+
+    width:100%;
+    height:420px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+/* Blurred Background Artist Image */
+
+#posterImg::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:var(--artist-bg);
+    background-size:cover;
+    background-position:center;
+
+    transform:scale(1.3);
+
+    filter:
+        blur(35px)
+        brightness(.45);
+
+    z-index:0;
+}
+
+/* Dark Gradient Overlay */
+
+#posterImg::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.7),
+        #0a0a0a
+    );
+
+    z-index:1;
+}
+
+/* ===================================
+   ARTIST IMAGE
+=================================== */
+
+#posterImg img{
+    position:relative;
+    z-index:2;
+
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+    object-fit:cover;
+
+    border:5px solid rgba(255,255,255,.15);
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.5),
+    0 0 60px rgba(255,255,255,.1);
+
+    transition:.4s;
+}
+
+#posterImg img:hover{
+    transform:scale(1.05);
+}
+
+/* ===================================
+   ARTIST NAME
+=================================== */
+
+#name{
+    font-family: 'Pro-Racing';
+    position:relative;
+    z-index:2;
+
+    margin-top:25px;
+
+    font-size:3rem;
+    font-weight:800;
+
+    text-align:center;
+
+    letter-spacing:1px;
+}
+
+/* ===================================
+   CLOSE BUTTON
+=================================== */
+
+#closeBatton{
+    position:absolute;
+    top:25px;
+    right:25px;
+
+    width:50px;
+    height:50px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.1);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    cursor:pointer;
+
+    z-index:10;
+
+    font-size:22px;
+    font-weight:700;
+
+    transition:.3s;
+}
+
+#closeBatton:hover{
+    transform:rotate(90deg);
+    background:rgba(255,255,255,.2);
+}
+
+/* ===================================
+   SONG SECTION
+=================================== */
+
+#top10{
+    position:relative;
+    z-index:2;
+
+    margin-top:-40px;
+
+    padding:40px;
+}
+
+/* ===================================
+   HEADER
+=================================== */
+
+.heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    font-size:2rem;
+    font-weight:800;
+
+    margin-bottom:30px;
+}
+
+.heading div{
+    display:flex;
+    gap:12px;
+}
+
+/* ===================================
+   ARROWS
+=================================== */
+
+#pop_song_left1,
+#pop_song_right1{
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    cursor:pointer;
+
+    font-size:26px;
+
+    transition:.3s;
+}
+
+#pop_song_left1:hover,
+#pop_song_right1:hover{
+    transform:scale(1.1);
+
+    background:#1db954;
+
+    color:white;
+}
+
+/* ===================================
+   SONG GRID
+=================================== */
+
+/* .ArtistsSongs #btn_c_top10{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(220px,1fr));
+
+    gap:25px;
+} */
+
+@media (max-width:499px) {
+    .ArtistsSongs{
+        width: 100%;
+    }
+}

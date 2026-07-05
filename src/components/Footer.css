@@ -1,0 +1,147 @@
+/* =====================================================
+   FOOTER PREMIUM
+===================================================== */
+footer {
+    margin-top: 80px;
+    padding: 60px 40px;
+    border-top: 1px solid var(--glass-border);
+}
+
+#links_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+}
+
+#links_container ul {
+    list-style: none;
+    padding: 0;
+}
+
+#links_container li {
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+#links_container li:hover {
+    color: var(--text-main);
+}
+
+#links_container strong {
+    color: var(--text-main);
+}
+
+#icons h2 {
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.social_icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social_icons a {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--glass-high);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.social_icons a:hover {
+    transform: translateY(-5px);
+    background: var(--accent-purple);
+}
+
+/* =====================================================
+   CONTACT TABLE
+===================================================== */
+/* #contact_section {
+    margin-top: 60px;
+}
+
+#contact_section h1 {
+    color: var(--text-main);
+    margin-bottom: 25px;
+}
+
+#contact_table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--glass-low);
+}
+
+#contact_table th {
+    background: var(--glass-high);
+    color: var(--text-main);
+    padding: 18px;
+}
+
+#contact_table td {
+    padding: 18px;
+    color: var(--text-table);
+    border-top: 1px solid rgba(255, 255, 255, .06);
+}
+
+#contact_table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+} */
+
+/* =====================================================
+   CREATOR CARD
+===================================================== */
+.creator-card {
+    margin: 70px auto 30px;
+    width: 450px;
+    text-align: center;
+    padding: 35px;
+    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(124, 92, 255, .15), var(--glass-med));
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.creator-label {
+    color: var(--accent-glow);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.creator-name {
+    color: var(--text-main);
+    font-size: 34px;
+    font-weight: 800;
+    margin-top: 12px;
+}
+
+.creator-glow {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: var(--accent-purple);
+    filter: blur(120px);
+    opacity: .25;
+    top: -100px;
+    right: -50px;
+}
+
+#copyright {
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: 30px;
+}

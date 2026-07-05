@@ -1,0 +1,129 @@
+/* ================= HOME PAGE ================= */
+.HomePage {
+    width: 70%;
+    height: 100%;
+    padding: 25px;
+    color: var(--text-main);
+    overflow-y: auto;
+}
+
+/* ================= SECTION HEADINGS ================= */
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--text-main);
+}
+
+.heading div {
+    display: flex;
+    gap: 10px;
+}
+
+.heading i {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: var(--glass-high);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.heading i:hover {
+    background: var(--accent-purple);
+    transform: scale(1.1);
+}
+
+/* ================= CORE INTERFACES (TOP SONGS, ARTISTS, EXPLORE) ================= */
+#top10, #artists, #explore {
+    margin-top: 50px;
+    width: 100%;
+}
+
+#btn_c_top10, #astist_c, #e_song {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#btn_c_top10::-webkit-scrollbar,
+#astist_c::-webkit-scrollbar,
+#e_song::-webkit-scrollbar {
+    display: none;
+}
+
+.sr_numbar {
+    min-width: 70px;
+    font-size: 70px;
+    font-weight: 900;
+    color: var(--glass-high);
+    display: flex;
+    align-items: center;
+}
+
+/* EXPLORE GRID SYSTEM */
+/* #e_song {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 22px;
+} */
+
+/* ================= PREMIUM EFFECT CARDS ================= */
+.songBox, .artistCard {
+    background: var(--glass-med);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 22px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.songBox:hover, .artistCard:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-deep);
+    border-color: rgba(124, 92, 255, .45);
+}
+
+/* ================= APP-WIDE CUSTOM SCROLLBARS ================= */
+*::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+    background: var(--accent-purple);
+    border-radius: 50px;
+}
+
+/* ================= MEDIA BREAKPOINTS ================= */
+@media(max-width: 799px) {
+    .HomePage { padding: 15px; }
+    .heading { font-size: 22px; }
+    .sr_numbar { font-size: 50px; }
+    #e_song { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    .heading span{
+        width: 60vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+}
+
+@media (max-width:499px) {
+    .HomePage{
+        width: 100vw;
+    }
+}

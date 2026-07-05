@@ -1,0 +1,83 @@
+.PSong {
+    display: grid;
+    grid-template-columns: 60px 70px 1fr 60px;
+    align-items: center;
+    padding: 14px 18px;
+    border-radius: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid transparent;
+    transition: var(--global-transition);
+    width: 100%;
+}
+
+.PSong:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border);
+    transform: translateY(-2px);
+}
+
+/* #left_c{
+    display: flex;
+}
+#left_c span{
+    font-family: monospace;
+    font-size: 20px;
+    color: var(--text-muted);
+    width: 20%;
+} */
+/* Song Item Index Number Alignment */
+.PSong > span {
+    font-family: monospace;
+    font-size: 16px;
+    color: var(--text-muted);
+    width: 20%;
+}
+
+.PSong img {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.PSong h5 {
+    font-family: 'Pro-Racing';
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    width: 160%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+}
+
+/* Retains original logic structural keyword 'subtitel' */
+.subtitel {
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    width: 60%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+}
+
+/* Interactive Component Matrix Row Control */
+.playListPlay {
+    font-size: 32px;
+    color: var(--accent-purple);
+    cursor: pointer;
+    justify-self: end;
+    transition: var(--global-transition);
+}
+
+.playListPlay:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 12px rgba(124, 92, 255, 0.4));
+}
+@media (max-width:799px) {
+    
+}

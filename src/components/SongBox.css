@@ -1,0 +1,151 @@
+/* ==========================================
+   SONG BOX
+========================================== */
+
+.SongBox{
+    position:relative;
+
+    min-width:220px;
+    width: 250px;
+    height: 90%;
+
+    padding:16px;
+
+    border-radius:26px;
+
+    background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.06),
+      rgba(255,255,255,.02)
+    );
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:.35s;
+}
+
+.SongBox:hover{
+    transform:
+    translateY(-8px);
+
+    border-color:
+    rgba(124,92,255,.45);
+
+    box-shadow:
+    0 25px 40px rgba(0,0,0,.35);
+}
+
+.img_play{
+    position:relative;
+}
+
+.img_play img{
+    width:100%;
+    aspect-ratio:1;
+
+    object-fit:cover;
+
+    border-radius:20px;
+}
+
+/* play button */
+
+.playListPlay{
+    position:absolute;
+
+    right:12px;
+    bottom:12px;
+
+    width:52px;
+    height:52px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    font-size:20px;
+
+    color:white;
+
+    background:
+    linear-gradient(
+      135deg,
+      #7c5cff,
+      #3b82f6
+    );
+
+    opacity:0;
+
+    transform:
+    translateY(10px);
+
+    transition:.3s;
+}
+
+.SongBox:hover .playListPlay{
+    opacity:1;
+    transform:
+    translateY(0);
+}
+
+/* title */
+
+.SongBox h5{
+    font-family: 'Pro-Racing';
+
+    margin-top:16px;
+
+    color:white;
+
+    font-size:16px;
+    font-weight:700;
+
+    line-height:1.4;
+}
+
+.subtitel{
+    margin-top:6px;
+
+    color:#94a3b8;
+
+    font-size:13px;
+    font-weight:400;
+}
+
+/* glow */
+
+.SongBox::before{
+    content:"";
+
+    position:absolute;
+
+    width:140px;
+    height:140px;
+
+    background:
+    #7c5cff;
+
+    filter:blur(90px);
+
+    opacity:.12;
+
+    top:-60px;
+    right:-60px;
+}
+
+.subtitel, .SongBox h5{
+    width: 96%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}

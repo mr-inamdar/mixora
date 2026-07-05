@@ -1,0 +1,57 @@
+.Playlist {
+    width: 30%;
+    height: 100%;
+    padding: 30px;
+    color: var(--text-pure);
+    overflow: hidden;
+}
+
+/* Segmented Top Headers */
+#playlist_header {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 35px;
+    border-bottom: 1px solid var(--glass-border);
+    gap: 10px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+#playlist_header h1 {
+    font-family: 'Pro-Racing';
+    font-size: 34px;
+    font-weight: 800;
+}
+
+#playlist_header h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--global-transition);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#playlist_header h4.active,
+#playlist_header h4:hover {
+    color: var(--text-pure);
+}
+
+/* Vertical Song Deck Structure */
+#ply_song_c {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (max-width:499px) {
+    .Playlist{
+        display: none;
+        width: 100vw;
+        transition: 0.4s linear;
+        
+    }
+}

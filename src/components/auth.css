@@ -1,0 +1,305 @@
+/* ===================================
+   AUTH POPUP OVERLAY
+=================================== */
+
+.authPopup{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(15px);
+
+    z-index:99999;
+
+    animation:fadeIn .35s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+/* ===================================
+   AUTH BOX
+=================================== */
+
+.authBox{
+    position:relative;
+
+    width:min(420px,90%);
+    padding:35px;
+
+    border-radius:32px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.03)
+    );
+
+    backdrop-filter:blur(30px);
+    -webkit-backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+    0 25px 80px rgba(0,0,0,.45),
+    inset 0 1px 1px rgba(255,255,255,.15);
+
+    overflow:hidden;
+
+    animation:popupShow .4s ease;
+}
+
+/* Animated Glow */
+
+.authBox::before{
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(29,185,84,.35),
+        transparent
+    );
+
+    top:-100px;
+    left:-100px;
+
+    filter:blur(40px);
+}
+
+.authBox::after{
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(0,153,255,.25),
+        transparent
+    );
+
+    bottom:-80px;
+    right:-80px;
+
+    filter:blur(50px);
+}
+
+@keyframes popupShow{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.92);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* ===================================
+   TITLE
+=================================== */
+
+.authBox h2{
+    text-align:center;
+
+    margin-bottom:30px;
+
+    font-size:2rem;
+    font-weight:800;
+
+    color:white;
+
+    position:relative;
+    z-index:2;
+}
+
+/* ===================================
+   CLOSE BUTTON
+=================================== */
+
+.closeAuth{
+    position:absolute;
+    top:18px;
+    right:18px;
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    z-index:5;
+}
+
+.closeAuth:hover{
+    transform:rotate(90deg);
+    background:rgba(255,255,255,.15);
+}
+
+/* ===================================
+   FORM
+=================================== */
+
+#otherDetail{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+
+    position:relative;
+    z-index:2;
+}
+
+/* ===================================
+   INPUTS
+=================================== */
+
+#otherDetail input{
+    width:100%;
+
+    padding:15px 18px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    background:rgba(255,255,255,.05);
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+#otherDetail input::placeholder{
+    color:rgba(255,255,255,.5);
+}
+
+#otherDetail input:focus{
+    border-color:#1db954;
+
+    background:rgba(255,255,255,.08);
+
+    box-shadow:
+    0 0 0 3px rgba(29,185,84,.15),
+    0 0 20px rgba(29,185,84,.2);
+}
+
+/* ===================================
+   BUTTON
+=================================== */
+
+#otherDetail button{
+    margin-top:10px;
+
+    border:none;
+
+    padding:16px;
+
+    border-radius:18px;
+
+    font-size:16px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #1db954,
+        #14a44d
+    );
+
+    transition:.35s;
+
+    box-shadow:
+    0 10px 25px rgba(29,185,84,.35);
+}
+
+#otherDetail button:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 15px 35px rgba(29,185,84,.45);
+}
+
+/* ===================================
+   FOOTER TEXT
+=================================== */
+
+.authBox p{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:rgba(255,255,255,.7);
+
+    position:relative;
+    z-index:2;
+}
+
+.authBox p span{
+    color:#1db954;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.authBox p span:hover{
+    color:#4dff94;
+}
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media(max-width:600px){
+
+    .authBox{
+        width:92%;
+        padding:25px;
+        border-radius:24px;
+    }
+
+    .authBox h2{
+        font-size:1.7rem;
+    }
+}
