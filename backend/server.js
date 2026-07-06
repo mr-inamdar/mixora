@@ -12,10 +12,18 @@ require("./models/Playlist");
 
 const app = express();
 // 👇 Yahan add karo
+// app.use(cors({
+//   origin: [
+//     "http://localhost:5001",
+//     "https://mixora-v3cw.onrender.com"
+//   ],
+//   credentials: true
+// }));
+
 app.use(cors({
   origin: [
-    "http://localhost:5001",
-    "https://mixora-v3cw.onrender.com"
+    "http://localhost:3000",
+    "https://mixora-seven.vercel.app"
   ],
   credentials: true
 }));
@@ -25,6 +33,10 @@ app.use(express.json());
 app.use("/auth", require("./routes/auth"));
 app.use("/songs", require("./routes/songs"));
 app.use("/playlist", require("./routes/playlist"));
+
+app.get("/", (req, res) => {
+  res.send("Mixora Backend is Running 🚀");
+});
 
 const startServer = async () => {
 
