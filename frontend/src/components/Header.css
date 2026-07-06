@@ -685,7 +685,7 @@
         top: 12vh;
         right: -70vw;
         width: 70vw;
-        height: 78vh;
+        height: calc(77vh - 92px);
 
         z-index: 1;
 
@@ -715,7 +715,7 @@
         position: absolute;
         top: -91vh;
         left: 0;
-        height: 91vh;
+        height: calc(91vh - 92px);
         width: 100vw;
         display: flex;
         align-items: flex-start;
