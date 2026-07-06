@@ -382,7 +382,7 @@ useEffect(() => {
   const toggleSearchBar = ()=>{
     document.getElementById('header_userbox').style.right = '-70vw';
     let searchbar_container = document.getElementById('serch_list_page');
-    if (searchbar) {
+    if (!searchbar) {
       searchbar_container.style.top = '0px';
     }
     else{
@@ -394,7 +394,7 @@ useEffect(() => {
   const toggleAccountPage = ()=>{
     document.getElementById('serch_list_page').style.top = '-91vh';
     let header_userbox = document.getElementById('header_userbox');
-    if (searchbar) {
+    if (!accountPage) {
       header_userbox.style.right = '0px';
     }
     else{
@@ -408,30 +408,37 @@ useEffect(() => {
     document.getElementById('serch_list_page').style.top = '-91vh';
     document.getElementsByClassName('Playlist')[0].style.display = "none";
 
-    if (!homePage && homepage.style.display === 'none') {
+    setPlaylistPage(false);
+
+    if (!homePage) {
       homepage.style.display = "block";
-      setHomePage(false);
-    }
-    else{
-      homepage.style.display = "none";
       setHomePage(true);
     }
+    // else if(homePage){
+    //   homepage.style.display = "none";
+    //   setHomePage(false);
+    // }
     // setHomePage(!homePage);
   }
   const togglePlaylist = ()=>{
     let playlist = document.getElementsByClassName('Playlist')[0];
+    // if(playlist.style.display !== 'none'){
+
+    // }
     document.getElementById('header_userbox').style.right = '-70vw';
     document.getElementById('serch_list_page').style.top = '-91vh';
     document.getElementsByClassName('HomePage')[0].style.display = "none";
 
-    if (!playlistPage && playlist.style.display === 'none') {
+    setHomePage(false);
+
+    if (!playlistPage) {
       playlist.style.display = "block";
-      setPlaylistPage(false);
-    }
-    else{
-      playlist.style.display = "none";
       setPlaylistPage(true);
     }
+    // else if (playlistPage){
+    //   playlist.style.display = "none";
+    //   setPlaylistPage(true);
+    // }
     // setPlaylistPage(!playlistPage);
   }
 
