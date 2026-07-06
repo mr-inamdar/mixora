@@ -223,16 +223,16 @@ export default function Header(props) {
     }
     setListOpen(!listOpen);
   }
-
+  const accountPage = props;
   useEffect(()=>{
-    let listDisplay = document.getElementById('header_userbox');
-    if (listDisplay.style.right === '0px') {
+    const list = document.getElementById('header_userbox')
+    if (accountPage || list.style.right === "0px") {
       setListOpen(true);
     }
     else{
       setListOpen(false);
     }
-  }, []);
+  }, [accountPage]);
 
   return (
     <>
