@@ -766,6 +766,9 @@ body,
     opacity:.85;
     cursor:not-allowed;
 }
+#mobileNevigetionOption{
+ display: none;
+}
 @media (max-width:899px) {
     
 }
