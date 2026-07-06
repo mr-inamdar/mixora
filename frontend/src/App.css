@@ -777,6 +777,10 @@ body,
       height: 77%;
     }
     #mobileNevigetionOption{
+        position: fixed;
+        bottom: 0;
+        left:0;
+        right:0;
         width: 100vw;
         height: 9vh;
         background-color: #0a0a0a;
