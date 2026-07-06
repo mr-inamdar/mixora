@@ -137,14 +137,16 @@ export default function Header(props) {
 
   };
 
+  const { fetchPlaylist, setPSongs } = props;
+
   useEffect(() => {
     if (!user) {
-      props.setPSongs([]);
+      setPSongs([]);
       return;
     }
 
-    props.fetchPlaylist();
-  }, [user]);
+    fetchPlaylist();
+  }, [user, fetchPlaylist, setPSongs]);
 
 
   useEffect(() => {

@@ -89,7 +89,7 @@ function App() {
     }
 
   };
-  const fetchPlaylist = async () => {
+  const fetchPlaylist = useCallback(async () => {
     try {
       const res = await axios.get(
         "https://mixora-v3cw.onrender.com/playlist/my",
@@ -105,7 +105,7 @@ function App() {
       console.log(err);
       setPSongs([]);
     }
-  };
+  },[setPSongs]);
 
   useEffect(() => {
 
@@ -116,7 +116,7 @@ function App() {
       fetchPlaylist();
     }
 
-  }, []);
+  }, [fetchPlaylist]);
 
   // Load Data on Mount
   useEffect(() => {
