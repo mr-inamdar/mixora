@@ -453,7 +453,6 @@ useEffect(() => {
         artists={artists}
         fetchPlaylist={fetchPlaylist}
         setPSongs={setPSongs}
-        accountPage={accountPage}
       />
       <div
         id="MainPage"
