@@ -60,18 +60,18 @@ function App() {
   const [homePage, setHomePage] = useState(true);
   const [playlistPage, setPlaylistPage] = useState(false);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 499);
+  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 499);
-    };
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 499);
+  };
 
-    window.addEventListener("resize", handleResize);
+  handleResize(); // Initial value set karega
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
   const loadSongs = async () => {
 
     try {
