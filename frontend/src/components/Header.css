@@ -5,8 +5,10 @@
     height: 14%;
 
     /* position: sticky;
-    top: 0;
-    z-index: 1000; */
+    top: 0;*/
+    z-index: 1000; 
+
+    overflow: visible;
 
     display:flex;
     align-items:center;
@@ -687,7 +689,7 @@
         width: 70vw;
         height: calc(77vh - 92px);
 
-        z-index: 1;
+        z-index: 1777;
 
         padding: 30px;
 
