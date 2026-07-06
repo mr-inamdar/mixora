@@ -77,7 +77,7 @@ function App() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5001/songs"
+        "https://mixora-v3cw.onrender.com/songs"
       );
 
       setAllSongs(res.data);
