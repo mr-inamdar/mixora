@@ -104,7 +104,7 @@ body,
 ========================================================= */
 #MainPage {
     width: 100%;
-    height: calc(86% - 92px);
+    height:86%;
     display: flex;
     position: relative;
     transition: height 0.3s ease;
@@ -769,6 +769,9 @@ body,
     
 }
 @media (max-width:499px) {
+    #MainPage{
+      height: 77%;
+    }
     #mobileNevigetionOption{
         width: 100vw;
         height: 9vh;
