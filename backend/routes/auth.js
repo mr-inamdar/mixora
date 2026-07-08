@@ -45,19 +45,19 @@ router.post("/register", async (req, res) => {
     // });
 
     const token = jwt.sign(
-  { id: user.id },
-  process.env.JWT_SECRET,
-  { expiresIn: "7d" }
-);
+      { id: user.id },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
 
-  res.status(201).json({
-    token,
-    user: {
-      id: user.id,
-      username: user.username,
-      email: user.email
-    }
-  });
+    res.status(201).json({
+      token,
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email
+      }
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -102,9 +102,18 @@ router.post("/login", async (req, res) => {
       }
     );
 
+    // res.json({
+    //   token,
+    //   user
+    // });
+
     res.json({
       token,
-      user
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email
+      }
     });
 
     // const token = jwt.sign(
@@ -128,70 +137,96 @@ router.post("/login", async (req, res) => {
 
 });
 
-const auth = require("../middleware/authMiddleware");
+const authMiddleware = require("../middleware/authMiddleware");
 
-router.delete("/delete-account", auth, async (req, res) => {
+router.delete("/delete-account", authMiddleware, async (req, res) => {
 
-  const t = await sequelize.transaction();
+  console.log("DELETE ROUTE HIT");
+
+  return res.json({ message: "Route reached" });
 
   try {
+    console.log("User from token:", req.user);
 
     const userId = req.user.id;
+    console.log("Deleting user:", userId);
 
-    const playlists = await Playlist.findOne({
-      where: {
-        owner_id: userId
-      },
-      transaction: t
+    const deleted = await User.destroy({
+      where: { id: userId }
     });
 
-    for (const playlist of playlists) {
+    console.log("Deleted rows:", deleted);
 
-      await playlist.setSongs([], {
-        transaction: t
-      });
-
-    }
-
-    await Playlist.destroy({
-      where: {
-        owner_id: userId
-      },
-      transaction: t
-    });
-
-    await Song.destroy({
-      where: {
-        uploaded_by: userId
-      },
-      transaction: t
-    });
-
-    await User.destroy({
-      where: {
-        id: userId
-      },
-      transaction: t
-    });
-
-    await t.commit();
-
-    res.json({
-      success: true
-    });
+    res.json({ success: true });
 
   } catch (err) {
-
-    await t.rollback();
-
-    console.log(err);
-
+    console.error(err);
     res.status(500).json({
-      error: "Delete Failed"
+      error: err.message
     });
-
   }
-
 });
+
+// router.delete("/delete-account", authMiddleware, async (req, res) => {
+
+//   const t = await sequelize.transaction();
+
+//   try {
+
+//     const userId = req.user.id;
+
+//     const playlist = await Playlist.findOne({
+//       where: {
+//         owner_id: userId
+//       },
+//       transaction: t
+//     });
+
+//     if (playlist) {
+//       await playlist.setSongs([], {
+//         transaction: t
+//       });
+//     }
+
+//     await Playlist.destroy({
+//       where: {
+//         owner_id: userId
+//       },
+//       transaction: t
+//     });
+
+//     // await Song.destroy({
+//     //   where: {
+//     //     uploaded_by: userId
+//     //   },
+//     //   transaction: t
+//     // });
+
+//     await User.destroy({
+//       where: {
+//         id: userId
+//       },
+//       transaction: t
+//     });
+
+//     await t.commit();
+
+//     res.json({
+//       success: true
+//     });
+
+//   } catch (err) {
+
+//     await t.rollback();
+
+//     console.log(err);
+
+//     res.status(500).json({
+//       error: "Delete Failed"
+//     });
+
+//   }
+
+// });
 
 module.exports = router;
