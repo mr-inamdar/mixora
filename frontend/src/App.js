@@ -215,6 +215,14 @@ useEffect(() => {
 
       setUploadProgress(100);
 
+      setTitle('');
+      setAlbum('');
+      setArtist('');
+      setHindiName('');
+      setUrduName('');
+      setSongFile(null);
+      setImageFile(null);
+
       alert("Song Uploaded Successfully");
 
       await loadSongs();

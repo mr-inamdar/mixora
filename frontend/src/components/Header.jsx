@@ -97,18 +97,37 @@ export default function Header(props) {
 
       } else {
 
-        await axios.post(
-          "https://mixora-v3cw.onrender.com/auth/register",
-          {
-            username: formData.name,
-            email: formData.email,
-            password: formData.password
-          }
-        );
+        // await axios.post(
+        //   "https://mixora-v3cw.onrender.com/auth/register",
+        //   {
+        //     username: formData.name,
+        //     email: formData.email,
+        //     password: formData.password
+        //   }
+        // );
 
-        alert("Account Created");
+        // alert("Account Created");
 
-        setIsLogin(true);
+        // setIsLogin(true);
+
+        const res = await axios.post("https://mixora-v3cw.onrender.com/auth/register", {
+          username: formData.name,
+          email: formData.email,
+          password: formData.password,
+        });
+
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userId", res.data.user.id);
+        localStorage.setItem("userName", res.data.user.username);
+
+        setUser({
+          name: res.data.user.username,
+          email: res.data.user.email,
+        });
+
+        setShowAuth(false);
+
+        alert("Account Created Successfully");
       }
 
       setShowAuth(false);
@@ -232,6 +251,46 @@ export default function Header(props) {
       setListOpen(false);
     }
   }, []);
+
+
+  const handleDeleteAccount = async () => {
+
+    const ok = window.confirm(
+      "Are you sure you want to delete your account?"
+    );
+
+    if (!ok) return;
+
+    try {
+
+      await axios.delete(
+        "https://mixora-v3cw.onrender.com/auth/delete-account",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      );
+
+      // localStorage.clear();
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("userName");
+
+
+      setUser(null);
+      //setPSongs([]);
+
+      alert("Account Deleted");
+
+      //window.location.reload();
+
+    } catch (err) {
+      console.log(err);
+      alert("Unable to delete account");
+    }
+  };
 
   return (
     <>
@@ -376,7 +435,7 @@ export default function Header(props) {
                     </div>
 
                   ) : (
-
+                    <>
                     <div className="dropItem">
                       <i className="bi bi-box-arrow-right"></i>
 
@@ -388,6 +447,17 @@ export default function Header(props) {
                       </span>
                     </div>
 
+                    <div className="dropItem">
+                      <i className="bi bi-trash"></i>
+
+                      <span
+                        style={{ color: "red" }}
+                        onClick={handleDeleteAccount}
+                      >
+                        Delete Mixora Account
+                      </span>
+                    </div>
+                    </>
                   )
                 }
                 <div className="dropItem">
