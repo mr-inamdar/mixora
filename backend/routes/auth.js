@@ -139,33 +139,76 @@ router.post("/login", async (req, res) => {
 
 const authMiddleware = require("../middleware/authMiddleware");
 
+
 router.delete("/delete-account", authMiddleware, async (req, res) => {
 
-  console.log("DELETE ROUTE HIT");
-
-  return res.json({ message: "Route reached" });
+  const t = await sequelize.transaction();
 
   try {
-    console.log("User from token:", req.user);
 
     const userId = req.user.id;
-    console.log("Deleting user:", userId);
 
-    const deleted = await User.destroy({
-      where: { id: userId }
+    // User ke uploaded songs delete karo
+    await Song.destroy({
+      where: {
+        uploaded_by: userId
+      },
+      transaction: t
     });
 
-    console.log("Deleted rows:", deleted);
+    // User delete karo
+    // Playlist aur PlaylistSongs automatically delete ho jayenge
+    await User.destroy({
+      where: {
+        id: userId
+      },
+      transaction: t
+    });
 
-    res.json({ success: true });
+    await t.commit();
+
+    res.json({
+      success: true,
+      message: "Account deleted successfully"
+    });
 
   } catch (err) {
+
+    await t.rollback();
+
     console.error(err);
+
     res.status(500).json({
       error: err.message
     });
+
   }
+
 });
+
+// router.delete("/delete-account", authMiddleware, async (req, res) => {
+
+//   try {
+//     console.log("User from token:", req.user);
+
+//     const userId = req.user.id;
+//     console.log("Deleting user:", userId);
+
+//     const deleted = await User.destroy({
+//       where: { id: userId }
+//     });
+
+//     console.log("Deleted rows:", deleted);
+
+//     res.json({ success: true });
+
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({
+//       error: err.message
+//     });
+//   }
+// });
 
 // router.delete("/delete-account", authMiddleware, async (req, res) => {
 
