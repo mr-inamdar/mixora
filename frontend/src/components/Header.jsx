@@ -263,9 +263,12 @@ export default function Header(props) {
       setListOpen(true);
     }
     else{
+      if (open) {
+        setOpen(false);
+      }
       setListOpen(false);
     }
-  }, []);
+  }, [open]);
 
 
   const handleDeleteAccount = async () => {
