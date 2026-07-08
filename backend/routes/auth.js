@@ -3,6 +3,8 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+const { sequelize } = require("../config/db");
+
 const User = require("../models/User");
 const Playlist = require("../models/Playlist");
 const Song = require("../models/Song");
@@ -37,11 +39,25 @@ router.post("/register", async (req, res) => {
     });
 
 
-    res.status(201).json({
-      message: "User Registered",
-      user
-    });
+    // res.status(201).json({
+    //   message: "User Registered",
+    //   user
+    // });
 
+    const token = jwt.sign(
+  { id: user.id },
+  process.env.JWT_SECRET,
+  { expiresIn: "7d" }
+);
+
+  res.status(201).json({
+    token,
+    user: {
+      id: user.id,
+      username: user.username,
+      email: user.email
+    }
+  });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -75,24 +91,105 @@ router.post("/login", async (req, res) => {
       });
     }
 
+    // const token = jwt.sign(
+    //   {
+    //     id: user.id,
+    //     email: user.email
+    //   },
+    //   process.env.JWT_SECRET,
+    //   {
+    //     expiresIn: "30d"
+    //   }
+    // );
+
+    // res.json({
+    //   token,
+    //   user
+    // });
+
     const token = jwt.sign(
-      {
-        id: user.id,
-        email: user.email
-      },
+      { id: user.id },
       process.env.JWT_SECRET,
-      {
-        expiresIn: "30d"
-      }
+      { expiresIn: "7d" }
     );
 
     res.json({
       token,
-      user
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email
+      }
     });
 
   } catch (err) {
     res.status(500).json(err);
+  }
+
+});
+
+const auth = require("../middleware/authMiddleware");
+
+router.delete("/delete-account", auth, async (req, res) => {
+
+  const t = await sequelize.transaction();
+
+  try {
+
+    const userId = req.user.id;
+
+    const playlists = await Playlist.findOne({
+      where: {
+        owner_id: userId
+      },
+      transaction: t
+    });
+
+    for (const playlist of playlists) {
+
+      await playlist.setSongs([], {
+        transaction: t
+      });
+
+    }
+
+    await Playlist.destroy({
+      where: {
+        owner_id: userId
+      },
+      transaction: t
+    });
+
+    await Song.destroy({
+      where: {
+        uploaded_by: userId
+      },
+      transaction: t
+    });
+
+    await User.destroy({
+      where: {
+        id: userId
+      },
+      transaction: t
+    });
+
+    await t.commit();
+
+    res.json({
+      success: true
+    });
+
+  } catch (err) {
+
+    await t.rollback();
+
+    console.log(err);
+
+    res.status(500).json({
+      error: "Delete Failed"
+    });
+
   }
 
 });
