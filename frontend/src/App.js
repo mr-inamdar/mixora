@@ -90,6 +90,9 @@ useEffect(() => {
 
   };
   const fetchPlaylist = useCallback(async () => {
+    if (!localStorage.getItem('token')) {
+      return
+    }
     try {
       const res = await axios.get(
         "https://mixora-v3cw.onrender.com/playlist/my",

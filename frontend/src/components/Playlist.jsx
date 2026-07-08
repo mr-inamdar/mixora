@@ -7,7 +7,7 @@ export default function Playlist(props) {
     <div className='Playlist' id='playList'>
       <header id="playlist_header">
         <h1>Playlist</h1>
-        <h4 class="active"><span></span><i class="bi bi-apple-music"></i> Playlist</h4>
+        <h4 className="active"><span></span><i class="bi bi-apple-music"></i> Playlist</h4>
         <h4><span></span><i class="bi bi-apple-music"></i> Last Listening</h4>
         <h4><span></span><i class="bi bi-apple-music"></i> Recommended</h4>
       </header>

@@ -73,6 +73,12 @@ export default function Header(props) {
           }
         );
 
+        console.log("LOGIN RESPONSE:", res.data);
+
+        localStorage.setItem("token", res.data.token);
+
+        console.log("TOKEN:", localStorage.getItem("token"));
+
         localStorage.setItem(
           "token",
           res.data.token
@@ -116,9 +122,16 @@ export default function Header(props) {
           password: formData.password,
         });
 
+        console.log(res.data);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userId", res.data.user.id);
         localStorage.setItem("userName", res.data.user.username);
+
+        console.log("REGISTER RESPONSE:", res.data);
+
+        localStorage.setItem("token", res.data.token);
+
+        console.log("TOKEN:", localStorage.getItem("token"));
 
         setUser({
           name: res.data.user.username,
@@ -146,9 +159,11 @@ export default function Header(props) {
   // LOGOUT
   const handleLogout = () => {
 
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("userName");
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("userId");
+    // localStorage.removeItem("userName");
+
+    localStorage.clear();
 
     setUser(null);
 
@@ -255,6 +270,8 @@ export default function Header(props) {
 
   const handleDeleteAccount = async () => {
 
+    // if(true) return;
+
     const ok = window.confirm(
       "Are you sure you want to delete your account?"
     );
@@ -272,15 +289,15 @@ export default function Header(props) {
         }
       );
 
-      // localStorage.clear();
+     localStorage.clear();
 
-      localStorage.removeItem("token");
-      localStorage.removeItem("userId");
-      localStorage.removeItem("userName");
+      // localStorage.removeItem("token");
+      // localStorage.removeItem("userId");
+      // localStorage.removeItem("userName");
 
 
       setUser(null);
-      //setPSongs([]);
+      props.setPSongs([]);
 
       alert("Account Deleted");
 
