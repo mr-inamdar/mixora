@@ -129,18 +129,27 @@ useEffect(() => {
 
   const currentSongList = allSongs;
 
-  const currentSong = allSongs[currPlayIdx];
+  // let currentSong = allSongs[currPlayIdx];
 
-  const inPlaylist = pSongs.some(
-    (playlistSong) => playlistSong.id === currentSong.id
-  );
+  // const inPlaylist = pSongs.some(
+  //   (playlistSong) =>  playlistSong.title.toLowerCase() === currentSong.title.toLowerCase()
+  // );
 
-  currentSong = {
-    ...currentSong,
-    inPlaylist
+  // currentSong = {
+  //   ...currentSong,
+  //   inPlaylist
+  // };
+
+  const currentSong = {
+    ...allSongs[currPlayIdx],
+    inPlaylist: pSongs.some(
+      (playlistSong) =>
+        playlistSong?.englishName?.toLowerCase() ===
+        allSongs[currPlayIdx]?.englishName?.toLowerCase()
+    )
   };
 
-  console.log(currentSongWithPlaylist);
+  console.log(currentSong)
 
   const playSong = (id) => {
 
@@ -464,6 +473,36 @@ useEffect(() => {
     // setPlaylistPage(!playlistPage);
   }
 
+  const removeFromPlaylist = async (songId) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Login first");
+      return;
+    }
+
+    try {
+      await axios.delete(
+        `https://mixora-v3cw.onrender.com/playlist/remove/${songId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Playlist dubara fetch karo
+      fetchPlaylist();
+
+      // Agar current song remove hua hai to uski state bhi update ho jayegi
+      // kyunki currentSong.inPlaylist pSongs se calculate ho raha hai.
+
+    } catch (err) {
+      console.log(err);
+      alert(err.response?.data?.error || "Failed to remove song");
+    }
+  };
+
   return (
     <div className="App">
       <audio ref={music_ref} src={currentSong?.audio}></audio>
@@ -499,6 +538,7 @@ useEffect(() => {
             handlePrev={handlePrev}
             handleSeek={handleSeek}
             addToPlaylist={(id) => addToPlaylist(id)}
+            removeFromPlaylist={(id) => removeFromPlaylist(id)}
             close={() => {
               setShowSongPage(false);
               setShowPlayer(true);

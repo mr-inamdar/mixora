@@ -20,8 +20,6 @@ function NowPlaying({
 
   const [showMenu, setShowMenu] = useState(false);
 
-  const userName = String(localStorage.getItem("userName"));
-
   // Seconds ko MM:SS format me convert karne ke liye helper function
   const formatTime = (time) => {
     if (isNaN(time) || time === null) return "0:00";
@@ -67,7 +65,7 @@ function NowPlaying({
 
               {/* Delete */}
               {song.source === "db" &&
-                song.uploadBy === userName(
+                song.uploadBy === String(localStorage.getItem("userName")) && (
                   <button
                     className="deleteBtn"
                     onClick={() => {
