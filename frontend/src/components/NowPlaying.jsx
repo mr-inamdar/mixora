@@ -67,7 +67,7 @@ function NowPlaying({
 
               {/* Delete */}
               {song.source === "db" &&
-                song.uploadBy === userName && (
+                song.uploadBy === userName(
                   <button
                     className="deleteBtn"
                     onClick={() => {

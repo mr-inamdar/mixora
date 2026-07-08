@@ -128,8 +128,19 @@ useEffect(() => {
 
 
   const currentSongList = allSongs;
+
   const currentSong = allSongs[currPlayIdx];
 
+  const inPlaylist = pSongs.some(
+    (playlistSong) => playlistSong.id === currentSong.id
+  );
+
+  currentSong = {
+    ...currentSong,
+    inPlaylist
+  };
+
+  console.log(currentSongWithPlaylist);
 
   const playSong = (id) => {
 
