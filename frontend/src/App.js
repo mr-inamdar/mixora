@@ -149,7 +149,7 @@ useEffect(() => {
     )
   };
 
-  console.log(currentSong)
+  // console.log(currentSong)
 
   const playSong = (id) => {
 
@@ -254,7 +254,7 @@ useEffect(() => {
 
     } catch (err) {
 
-      console.log(err);
+      // console.log(err);
       alert("Upload Failed");
 
     } finally {
@@ -498,7 +498,7 @@ useEffect(() => {
       // kyunki currentSong.inPlaylist pSongs se calculate ho raha hai.
 
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       alert(err.response?.data?.error || "Failed to remove song");
     }
   };
@@ -514,6 +514,8 @@ useEffect(() => {
         artists={artists}
         fetchPlaylist={fetchPlaylist}
         setPSongs={setPSongs}
+        toggleAccountPage={toggleAccountPage}
+        accountPage={accountPage}
       />
       <div
         id="MainPage"

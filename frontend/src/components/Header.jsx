@@ -14,7 +14,7 @@ export default function Header(props) {
 
   const [showAuth, setShowAuth] = useState(false);
 
-  const [listOpen, setListOpen] = useState(false);
+  // const [listOpen, setListOpen] = useState(false);
 
   const [isLogin, setIsLogin] = useState(true);
 
@@ -73,11 +73,11 @@ export default function Header(props) {
           }
         );
 
-        console.log("LOGIN RESPONSE:", res.data);
+        // console.log("LOGIN RESPONSE:", res.data);
 
-        localStorage.setItem("token", res.data.token);
+        // localStorage.setItem("token", res.data.token);
 
-        console.log("TOKEN:", localStorage.getItem("token"));
+        // console.log("TOKEN:", localStorage.getItem("token"));
 
         localStorage.setItem(
           "token",
@@ -122,16 +122,16 @@ export default function Header(props) {
           password: formData.password,
         });
 
-        console.log(res.data);
+        //console.log(res.data);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("userId", res.data.user.id);
         localStorage.setItem("userName", res.data.user.username);
 
-        console.log("REGISTER RESPONSE:", res.data);
+        // console.log("REGISTER RESPONSE:", res.data);
 
-        localStorage.setItem("token", res.data.token);
+        // localStorage.setItem("token", res.data.token);
 
-        console.log("TOKEN:", localStorage.getItem("token"));
+        // console.log("TOKEN:", localStorage.getItem("token"));
 
         setUser({
           name: res.data.user.username,
@@ -147,7 +147,7 @@ export default function Header(props) {
 
     } catch (err) {
 
-      console.log(err);
+      //console.log(err);
 
       alert(
         err.response?.data?.error ||
@@ -248,27 +248,43 @@ export default function Header(props) {
   // const userName = localStorage.getItem("userName");
   // const isLoggedIn = !!localStorage.getItem("token");
 
-  const toggleList = ()=>{
-    let listDisplay = document.getElementById('header_userbox');
-    if (listOpen) {
-      listDisplay.style.right = '-70vw';
-    } else{
-      listDisplay.style.right = '0px';
-    }
-    setListOpen(!listOpen);
-  }
+  // const toggleList = ()=>{
+  //   let listDisplay = document.getElementById('header_userbox');
+  //   if (listOpen) {
+  //     listDisplay.style.right = '-70vw';
+  //   } else{
+  //     listDisplay.style.right = '0px';
+  //   }
+  //   setListOpen(!listOpen);
+  // }
+
   useEffect(()=>{
-    const list = document.getElementById('header_userbox')
-    if (list.style.right === "0px") {
-      setListOpen(true);
+    let listDisplay = document.getElementById('serch_list_page');
+    if(!query && listDisplay.style.top === '0px'){
+      listDisplay.style.top = '-91vh';
+    } 
+  }, [query]);
+
+  // useEffect(()=>{
+  //   const list = document.getElementById('header_userbox')
+  //   if (list.style.right === "0px") {
+  //     //setListOpen(true);
+  //   }
+  //   else{
+  //     if (open) {
+  //       setOpen(false);
+  //     }
+  //     //setListOpen(false);
+  //   }
+  // }, [open]);
+
+  useEffect(()=>{
+
+    if (open && (!props.accountPage)) {
+      setOpen(false);
     }
-    else{
-      if (open) {
-        setOpen(false);
-      }
-      setListOpen(false);
-    }
-  }, [open]);
+
+  }, [open, props.accountPage]);
 
 
   const handleDeleteAccount = async () => {
@@ -307,7 +323,7 @@ export default function Header(props) {
       //window.location.reload();
 
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       alert("Unable to delete account");
     }
   };
@@ -318,7 +334,8 @@ export default function Header(props) {
 
         <img src={hlogo} alt="" id="hlogo" />
 
-        <i className={!(listOpen)? "bi bi-list": "bi bi-view-list"} id='list' onClick={toggleList}></i>
+        {/* <i className={!(listOpen)? "bi bi-list": "bi bi-view-list"} id='list' onClick={toggleList}></i> */}
+          <i className={!(props.accountPage)? "bi bi-list": "bi bi-view-list"} id='list' onClick={props.toggleAccountPage}></i>
             {/* SEARCH */}
           <div id="serch_list_page">
             <div id="hsearch_bar_c">

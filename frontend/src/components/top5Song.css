@@ -205,6 +205,7 @@ h5.subtitel{
     .trending_song_item{
         left: 10px;
         bottom: 40px;
+        gap: 10px;
     }
     .trending_song_item span{
         font-size: 2rem;

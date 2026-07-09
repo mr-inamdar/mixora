@@ -777,9 +777,6 @@ body {
 #mobileNevigetionOption{
  display: none;
 }
-@media (max-width:899px) {
-    
-}
 @media (max-width:499px) {
     #MainPage{
       height: 77%;
@@ -807,7 +804,16 @@ body {
     .addSongPopup  {
         flex-direction: column;
         width: 90vw;
-        height: 70vh;
+        height: 80vh;
+    }
+    .popupLeft{
+        height: 40%;
+    }
+    .popupLeft p{
+       width: 100%;
+       overflow: hidden;
+       text-overflow: ellipsis;
+       text-wrap: nowrap; 
     }
     .popupLeft,.popupRight{
         width: 100%;

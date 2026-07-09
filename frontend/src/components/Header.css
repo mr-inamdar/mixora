@@ -196,6 +196,7 @@
     display:flex;
     align-items:center;
     gap:12px;
+    width: 100%;
 
     padding:16px 20px;
 
@@ -210,6 +211,13 @@
 
 .dropItem i{
     font-size:18px;
+}
+
+.dropItem span{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
 }
 
 .rotate{
@@ -738,5 +746,8 @@
     }
     #hsearch_bar_c {
         width: 90vw;
+    }
+    .dropdown{
+        width: 170px;
     }
 }

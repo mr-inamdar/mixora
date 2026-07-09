@@ -9,6 +9,7 @@
     gap: 15px;
     padding: 12px;
     border-radius: 18px;
+    margin-bottom: 5px;
     cursor: pointer;
     transition: var(--global-transition);
     background: rgba(255, 255, 255, .03);
@@ -30,11 +31,13 @@
     object-fit: cover;
     flex-shrink: 0;
 }
-
+.searchInfo, .artistInfo{
+    width: 70%;
+}
 /* Shared Typography Context for Dynamic Items */
 .searchInfo h4,
 .artistInfo h4 {
-    width: 100%;
+    width: 90%;
     overflow: hidden;
     text-overflow: ellipsis;
     text-wrap: nowrap;
