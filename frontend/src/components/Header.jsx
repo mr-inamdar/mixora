@@ -280,7 +280,7 @@ export default function Header(props) {
 
   useEffect(()=>{
 
-    if (open && (!props.accountPage)) {
+    if (open && (!props.accountPage) && window.innerWidth <= 499) {
       setOpen(false);
     }
 
