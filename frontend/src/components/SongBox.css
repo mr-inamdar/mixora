@@ -33,8 +33,6 @@
 }
 
 .SongBox:hover{
-    transform: scale(1.00001);
-
     border-color:
     rgba(124,92,255,.45);
 
