@@ -16,7 +16,7 @@
 }
 
 .artist:hover {
-    transform: scale(1.00001);
+    transform: scale(1.01) rotate(1deg);
     box-shadow: var(--shadow-deep);
     border-color: var(--glass-border-hover);
 }
