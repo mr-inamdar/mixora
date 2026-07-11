@@ -60,18 +60,24 @@ function App() {
   const [homePage, setHomePage] = useState(true);
   const [playlistPage, setPlaylistPage] = useState(false);
 
+  const [showPlaylist, setShowPlaylist] = useState(false);
+
+  useEffect(() => {
+    setShowPlaylist(pSongs.length > 0);
+  }, [pSongs]);
+
   const [isMobile, setIsMobile] = useState(false);
 
-useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 499);
-  };
-
-  handleResize(); // Initial value set karega
-
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 499);
+    };
+  
+    handleResize(); // Initial value set karega
+  
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const loadSongs = async () => {
 
     try {
@@ -525,7 +531,7 @@ useEffect(() => {
             : (showPlayer ? "calc(86% - 92px)" : "86%"),
         }}
       >
-        <Playlist pSongs={pSongs} onClick={(id) => active_popup(id)} />
+        <Playlist pSongs={pSongs} showPlaylist={showPlaylist} isMobile={isMobile} onClick={(id) => active_popup(id)} />
     
         {showSongPage && currentSong ? (
           <NowPlaying
@@ -545,6 +551,8 @@ useEffect(() => {
               setShowSongPage(false);
               setShowPlayer(true);
             }}
+            showPlaylist={showPlaylist}
+            isMobile={isMobile}
             deleteSong = {(id) => deleteSong(id)}
           />
         ) : artistSong && artistSong.length > 0 && currArtistIdx !== null ? (
@@ -554,6 +562,8 @@ useEffect(() => {
             onClick={(id) => active_popup(id)}
             img={artists[currArtistIdx].img}
             name={artists[currArtistIdx].Name}
+            showPlaylist={showPlaylist}
+            isMobile={isMobile}
           />
         ) : (
           <HomePage
@@ -563,6 +573,8 @@ useEffect(() => {
             topsongs={allSongs.slice(0, 5)}
             songs={allSongs.slice(5, 15)}
             eSongs={allSongs.slice(15)}
+            showPlaylist={showPlaylist}
+            isMobile={isMobile}
           />
         )}
 
