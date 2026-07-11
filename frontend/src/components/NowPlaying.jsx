@@ -15,7 +15,9 @@ function NowPlaying({
   handleSeek,
   deleteSong,
   removeFromPlaylist,
-  addToPlaylist
+  addToPlaylist,
+  showPlaylist,
+  isMobile
 }) {
 
   const [showMenu, setShowMenu] = useState(false);
@@ -43,7 +45,7 @@ function NowPlaying({
   };
 
   return (
-    <div className="nowPlaying-container">
+    <div className="nowPlaying-container" style={{width:isMobile ? ('100%') : (showPlaylist ? '70%':'100%')}}>
       
       {/* Top Navigation Bar */}
       <div className="top-bar">
