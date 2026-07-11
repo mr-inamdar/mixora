@@ -62,45 +62,6 @@ footer {
 }
 
 /* =====================================================
-   CONTACT TABLE
-===================================================== */
-/* #contact_section {
-    margin-top: 60px;
-}
-
-#contact_section h1 {
-    color: var(--text-main);
-    margin-bottom: 25px;
-}
-
-#contact_table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
-    border-radius: 20px;
-    background: var(--glass-low);
-}
-
-#contact_table th {
-    background: var(--glass-high);
-    color: var(--text-main);
-    padding: 18px;
-}
-
-#contact_table td {
-    padding: 18px;
-    color: var(--text-table);
-    border-top: 1px solid rgba(255, 255, 255, .06);
-}
-
-#contact_table img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-} */
-
-/* =====================================================
    CREATOR CARD
 ===================================================== */
 .creator-card {
@@ -144,4 +105,10 @@ footer {
     text-align: center;
     color: var(--text-muted);
     margin-top: 30px;
+}
+
+@media (max-width: 499px) {
+    #links_container{
+        text-align: center;
+    }
 }
