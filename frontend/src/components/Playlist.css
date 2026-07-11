@@ -4,6 +4,7 @@
     padding: 30px;
     color: var(--text-pure);
     overflow: hidden;
+    transition: 0.4s linear;
 }
 
 /* Segmented Top Headers */
@@ -51,7 +52,5 @@
     .Playlist{
         display: none;
         width: 100vw;
-        transition: 0.4s linear;
-        
     }
 }
