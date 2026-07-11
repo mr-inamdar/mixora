@@ -98,7 +98,7 @@ export default function HomePage(props) {
     }, [props.topsongs]);
 
   return (
-    <div className='HomePage'>
+    <div className='HomePage' style={{width:props.isMobile ? ('100%'):(props.showPlaylist ? '70%':'100%')}}>
 
         {props.topsongs?.[current] && (
 
