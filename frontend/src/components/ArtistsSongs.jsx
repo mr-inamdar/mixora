@@ -4,7 +4,7 @@ import './ArtistsSongs.css'
 
 export default function ArtistsSongs(props) {
   return (
-    <div className='ArtistsSongs'>
+    <div className='ArtistsSongs' style={{width: props.isMobile ? '100%' : (props.showPlaylist ? '70%':'100%')}}>
       
       <div
         id="posterImg"
