@@ -36,35 +36,6 @@
 }
 
 /* ==============================
-   GLOWING BACKGROUND
-================================= */
-
-.nowPlaying-container::before,
-.nowPlaying-container::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    z-index: -1;
-}
-
-.nowPlaying-container::before {
-    width: 250px;
-    height: 250px;
-    background: rgba(0,122,255,.35);
-    top: -50px;
-    left: -50px;
-}
-
-.nowPlaying-container::after {
-    width: 250px;
-    height: 250px;
-    background: rgba(255,0,128,.25);
-    right: -60px;
-    bottom: -60px;
-}
-
-/* ==============================
    TOP BAR
 ================================= */
 
