@@ -237,20 +237,9 @@
     animation:marquee 12s linear infinite;
 }
 
-/* .marquee-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding: 5px 0;
-} */
-
 .marquee-text {
-  /* display: inline-block;
-  white-space: nowrap; */
   font-size: 38px;
   font-weight: 800;
-  /* text-wrap: nowrap; */
-  /* padding-left: 100%; */
   animation: marquee 12s linear infinite;
   will-change: transform;
 }
@@ -302,19 +291,19 @@
     margin-top: 8px;
     color: rgba(255,255,255,.7);
     width: 90%;
-    /* width: 70%; */
 }
 .artist-name{
-    width: 74%;
+    max-width: 74%;
     overflow: hidden;
     text-overflow: ellipsis;
     text-wrap: nowrap;
 }
 .dot-separator{
-    width: 2%;
+    min-width: 2%;
 }
 .album-name{
-    width: 24%;
+    min-width: 24%;
+    text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
     text-wrap: nowrap;
@@ -327,6 +316,22 @@
 .uploaded-by-row {
     margin-top: 8px;
     color: rgba(255,255,255,.5);
+    width: 90%;
+    display: flex;
+}
+
+.uploaded-by-row span{
+    max-width: 60%;
+    text-wrap: nowrap;
+}
+
+.uploader-name {
+    color: #0a84ff;
+    min-width: 50%;
+    text-align: left;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
 }
 
 .uploader-name {
@@ -461,8 +466,6 @@
 @media (max-width:768px) {
 
     #MainPage .nowPlaying-container {
-        /* width: 100%; */
-        /* border-radius: 0; */
         padding: 20px;
     }
 
