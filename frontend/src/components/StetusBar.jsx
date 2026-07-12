@@ -18,6 +18,32 @@ export default function StetusBar(props) {
     openSongPage
   } = props;
 
+  useEffect(() => {
+    if (!('mediaSession' in navigator) || !song) return;
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: song.englishName || '',
+      artist: song.artist || '',
+      album: song.album ||'Mixora',
+      artwork: [
+        {
+          src: song.img,
+          sizes: '512x512',
+          type: 'image/jpeg',
+        },
+      ],
+    });
+
+    navigator.mediaSession.playbackState = isPlaying
+      ? 'playing'
+      : 'paused';
+
+    navigator.mediaSession.setActionHandler('play', handlePlayPause);
+    navigator.mediaSession.setActionHandler('pause', handlePlayPause);
+    navigator.mediaSession.setActionHandler('nexttrack', handleNext);
+    navigator.mediaSession.setActionHandler('previoustrack', handlePrev);
+  }, [song, isPlaying]);
+
   const handle_download = () => {
 
     if (!song?.audio) return;
