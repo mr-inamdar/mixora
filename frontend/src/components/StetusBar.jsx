@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './StetusBar.css';
 
 export default function StetusBar(props) {
