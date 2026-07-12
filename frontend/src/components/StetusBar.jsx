@@ -42,7 +42,7 @@ export default function StetusBar(props) {
     navigator.mediaSession.setActionHandler('pause', handlePlayPause);
     navigator.mediaSession.setActionHandler('nexttrack', handleNext);
     navigator.mediaSession.setActionHandler('previoustrack', handlePrev);
-  }, [song, isPlaying]);
+  }, [song, isPlaying, handlePlayPause, handleNext, handlePrev]);
 
   const handle_download = () => {
 
