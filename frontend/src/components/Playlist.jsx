@@ -4,7 +4,7 @@ import './Playlist.css';
 
 export default function Playlist(props) {
   return (
-    <div className='Playlist' id='playList'>
+    <div className='Playlist' id='playList' style={{width: props.isMobile ? ('100vw') : (props.showPlaylist ? '30%':'0%') , padding: props.isMobile ? ('30px') : (props.showPlaylist ? '30px':'0px')}}>
       <header id="playlist_header">
         <h1>Playlist</h1>
         <h4 className="active"><span></span><i className="bi bi-apple-music"></i> Playlist</h4>
